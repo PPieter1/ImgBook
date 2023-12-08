@@ -2,11 +2,11 @@
 #### A helper tool for adding AI-generated images to ebooks
 
 ## Instructions
-1. Clone this repository.
+1. Clone this repository
 2. Install requirements from requirements.txt
 3. See Example.ipynb for an example of the workflow:
     1. Import functions
-    2. Create summarized book from ePub file.
+    2. Create summarized book from ePub file
     3. Automatically or manually set indices of chapters in summarized_book object
     4. Generate JSON file that can be imported by sd-webui-agent-scheduler
     5. This repository currently does not offer support for the following steps:
