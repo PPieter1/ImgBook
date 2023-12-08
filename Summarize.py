@@ -7,6 +7,8 @@ from summarizer import Summarizer, TransformerSummarizer
 
 from bs4 import BeautifulSoup
 
+from tqdm.notebook import tqdm
+
 # Function to read ePub file
 def __read_epub_file__(filename):
     """Reads the ePub file and returns the book object."""
@@ -78,17 +80,17 @@ def summarize_ebook(ebook_path, part_length, transformer_type='XLNet', transform
 
     # Generate summaries for each chapter
     summarized_chapters = {}
-    for chapter_title, chapter_text in text_dict.items():
+    for chapter_title, chapter_text in tqdm(text_dict.items(), desc='Chapters', position=0): # note: tqdm wrapper provides progress bar
         # Split the chapter text into parts
         parts = __split_string__(chapter_text, part_length)
 
         # Generate summaries for each part
-        summary_parts = []
-        for part in parts:
+        summary_parts = list()
+        for index, part in enumerate(tqdm(parts, desc='Chapter Parts', position=1, leave=False)):
             summary = summarizer.generate_summary(part, min_length=60, max_length=300)
             summary_parts.append(summary)
 
         # Store the summarized chapter
-        summarized_chapters[chapter_title] = {i: summary_parts[i::len(parts)] for i in range(len(parts))}
+        summarized_chapters[chapter_title] = summary_parts
 
     return summarized_chapters

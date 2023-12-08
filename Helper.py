@@ -59,16 +59,13 @@ def make_scheduler_json(template_file, output_file, summarized_book, chapter_ind
     template = json.load(f)[0] # Load json template file
     
     for chapter in summarized_book_list_slice: # Iterate through elements of slice of summarized_book_list
-        for part in chapter.values(): # Iterate through summarized chapter parts
-            prompt = part[0] # Part is list with 1 element, get element
-            # print(prompt)
-            
+        for part in chapter: # Iterate through summarized chapter parts   
             task = copy.deepcopy(template) # Make a deepcopy of the template JSON
 
             task['params']['checkpoint'] = checkpoint_name
-            
+
             # Apply prompt to template
-            task['params']['args']['prompt'] = prompt
+            task['params']['args']['prompt'] = part
             task['params']['args']['cfg_scale'] = cfg_scale
             task['params']['args']['steps'] = steps
             

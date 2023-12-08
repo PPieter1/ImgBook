@@ -3,3 +3,4 @@ bert_extractive_summarizer==0.10.1
 EbookLib==0.18
 numpy==1.26.2
 Pillow==10.1.0
+tqdm==4.66.1
