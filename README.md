@@ -1,5 +1,7 @@
 # ImgBook
 #### A helper tool for adding AI-generated images to ebooks
+![Screenshot from 2023-12-04 13-36-16](https://github.com/PPieter1/ImgBook/assets/153224400/ae8185b8-f035-4259-b530-8454779eebfd)
+
 
 ## Instructions
 1. Clone this repository
